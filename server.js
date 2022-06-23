@@ -2,6 +2,8 @@ const express = require('express')
 const app = express()
 const cors = require('cors')
 const {MongoClient, ObjectId} = require('mongodb')
+const { res } = require('express')
+const { req } = require('http')
 require('dotenv').config()
 const PORT = 8000
 
@@ -25,7 +27,7 @@ app.get('/search', async (req, res) => {
     try {
         let result = await collection.aggregate([
             {
-                '$Search' : {
+                '$search' : {
                     'autocomplete' : {
                         'query' : `${req.query.query}`,
                         'path' : 'title',

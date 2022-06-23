@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $('title').autocomplete({
+    $('#title').autocomplete({
         source: async function(req,res) {
             let data = await fetch(`http://localhost:8000/search?query=${request.term}`)
                 .then(results => results.json())
@@ -21,7 +21,7 @@ $(document).ready(function () {
                     $('#cast').empty()
                     result.cast.forEach(cast => 
                         {
-                            $(cast).append(`<li>$(cast)</li>`)
+                            $('#cast').append(`<li>${cast}</li>`)
                         })
                         $('img').attr('src',result.poster)
                 })
